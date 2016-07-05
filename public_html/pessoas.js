@@ -4,20 +4,20 @@
  * and open the template in the editor.
  */
 angular
-    .module('pessoas', [])
-    .config(function ($routeProvider){
-        $routeProvider
-        .when('/', {
-            templateUrl:'listar.html'
+        .module('pessoas', ['ngRoute'])
+        .config(function ($routeProvider) {
+            $routeProvider
+                    .when('/', {
+                        templateUrl: 'listar.html'
+                    });
+        })
+        .controller('CtrlPessoas', function ($scope) {
+            $scope.pessoas = [
+                {nome: "maria", cidade: "guarapari"},
+                {nome: "joao", cidade: "vitoria"},
+                {nome: "jose", cidade: "sete lagoas"},
+                {nome: "nilce", cidade: "prudente"},
+                {nome: "warley", cidade: "bh"}
+            ]
+
         });
-    })
-    .controller('CtrlPessoas', function($scope) {
-               $scope.pessoas = [
-                   {nome: "maria",cidade: "guarapari"},
-                   {nome: "joao",cidade: "vitoria"},
-                   {nome: "jose",cidade: "sete lagoas"},
-                   {nome: "nilce",cidade: "prudente"},
-                   {nome:"warley",cidade: "bh"}
-               ]
-   
-});
