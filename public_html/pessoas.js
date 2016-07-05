@@ -9,6 +9,10 @@ angular
             $routeProvider
                     .when('/', {
                         templateUrl: 'listar.html'
+                    })
+                    .when('/pessoa/adicionar', {
+                        templateUrl: 'adicionar.html',
+                        controller:'CtrlAdicionar'
                     });
         })
         .controller('CtrlPessoas', function ($scope) {
@@ -18,6 +22,13 @@ angular
                 {nome: "jose", cidade: "sete lagoas"},
                 {nome: "nilce", cidade: "prudente"},
                 {nome: "warley", cidade: "bh"}
-            ]
-
+            ];
+        })
+        .controller('CtrlAdicionar', function ($scope) {
+            $scope.adicionar = function () {
+                $scope.pessoas.push({
+                    nome: $scope.pessoa.nome,
+                    cidade: $scope.pessoa.cidade
+                });                
+            };
         });
