@@ -12,7 +12,11 @@ angular
                     })
                     .when('/pessoa/adicionar', {
                         templateUrl: 'adicionar.html',
-                        controller:'CtrlAdicionar'
+                        controller: 'CtrlAdicionar'
+                    })
+                    .when('/pessoa/editar/:index', {
+                        templateUrl: 'editar.html',
+                        controller: 'CtrlEditar'
                     });
         })
         .controller('CtrlPessoas', function ($scope) {
@@ -23,12 +27,18 @@ angular
                 {nome: "nilce", cidade: "prudente"},
                 {nome: "warley", cidade: "bh"}
             ];
+            $scope.remover = function(index){
+                   $scope.pessoas.splice(index,1);                   
+            };
         })
         .controller('CtrlAdicionar', function ($scope) {
             $scope.adicionar = function () {
-                $scope.pessoas.push({
-                    nome: $scope.pessoa.nome,
-                    cidade: $scope.pessoa.cidade
-                });                
+                $scope.pessoas.push($scope.pessoa);
+                $scope.pessoa = "";
+                $scope.result = "Registro adicionado com sucesso!";
             };
+        })
+        .controller('CtrlEditar', function ($scope, $routeParams) {
+            $scope.pessoa = $scope.pessoas[$routeParams.index];            
         });
+        

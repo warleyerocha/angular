@@ -1,6 +1,6 @@
-<ul>
+<ul class="menu">
     <li ng-repeat="pessoa in pessoas">
-        {{pessoa.nome}},{{pessoa.cidade}} 
+        <a href="#/pessoa/editar/{{$index}}"> {{pessoa.nome}},{{pessoa.cidade}}</a> - <button ng-click="remover($index)">Remover</button>
     </li>
 </ul>
 <button><a href="#/pessoa/adicionar">Adicionar pessoa</a></button>
